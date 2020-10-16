@@ -1,0 +1,25 @@
+server:
+  port: 11118
+  servlet:
+    context-path: /word02
+
+spring:
+  datasource:
+    username: transaction_cat
+    password: a!17836933686
+    url: jdbc:mysql://rm-2zemz5c04e8302537jo.mysql.rds.aliyuncs.com:3306/neigou?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai&nullCatalogMeansCurrent=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:mapping/*Mapper.xml
+  type-aliases-package: com.example.entity
+
+#showSql
+logging:
+  level:
+    com.hongang.ppt.dao: debug
+
+#word的app.id为3
+app.id: 5
+
+

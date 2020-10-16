@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hongang.ppt.dao.WordTypeMapper">
+  <resultMap id="BaseResultMap" type="com.hongang.ppt.entity.WordType">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="type_code" jdbcType="VARCHAR" property="typeCode" />
+    <result column="type_name" jdbcType="VARCHAR" property="typeName" />
+    <result column="sort_num" jdbcType="TINYINT" property="sortNum" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="is_valid" jdbcType="CHAR" property="isValid" />
+    <result column="app_id" jdbcType="BIGINT" property="appId" />
+    <result column="main_type" jdbcType="CHAR" property="mainType" />
+    <result column="is_vip" jdbcType="CHAR" property="isVip" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.hongang.ppt.entity.WordType">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="type_img" jdbcType="LONGVARCHAR" property="typeImg" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, type_code, type_name, sort_num, create_time, is_valid, app_id, main_type, is_vip
+  </sql>
+  <sql id="Blob_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    type_img
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.hongang.ppt.entity.WordTypeExample" resultMap="ResultMapWithBLOBs">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from word_type
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.hongang.ppt.entity.WordTypeExample" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from word_type
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.hongang.ppt.entity.WordTypeExample">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    delete from word_type
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <select id="countByExample" parameterType="com.hongang.ppt.entity.WordTypeExample" resultType="java.lang.Long">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select count(*) from word_type
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update word_type
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.typeCode != null">
+        type_code = #{record.typeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.typeName != null">
+        type_name = #{record.typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sortNum != null">
+        sort_num = #{record.sortNum,jdbcType=TINYINT},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isValid != null">
+        is_valid = #{record.isValid,jdbcType=CHAR},
+      </if>
+      <if test="record.appId != null">
+        app_id = #{record.appId,jdbcType=BIGINT},
+      </if>
+      <if test="record.mainType != null">
+        main_type = #{record.mainType,jdbcType=CHAR},
+      </if>
+      <if test="record.isVip != null">
+        is_vip = #{record.isVip,jdbcType=CHAR},
+      </if>
+      <if test="record.typeImg != null">
+        type_img = #{record.typeImg,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update word_type
+    set id = #{record.id,jdbcType=BIGINT},
+      type_code = #{record.typeCode,jdbcType=VARCHAR},
+      type_name = #{record.typeName,jdbcType=VARCHAR},
+      sort_num = #{record.sortNum,jdbcType=TINYINT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      is_valid = #{record.isValid,jdbcType=CHAR},
+      app_id = #{record.appId,jdbcType=BIGINT},
+      main_type = #{record.mainType,jdbcType=CHAR},
+      is_vip = #{record.isVip,jdbcType=CHAR},
+      type_img = #{record.typeImg,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update word_type
+    set id = #{record.id,jdbcType=BIGINT},
+      type_code = #{record.typeCode,jdbcType=VARCHAR},
+      type_name = #{record.typeName,jdbcType=VARCHAR},
+      sort_num = #{record.sortNum,jdbcType=TINYINT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      is_valid = #{record.isValid,jdbcType=CHAR},
+      app_id = #{record.appId,jdbcType=BIGINT},
+      main_type = #{record.mainType,jdbcType=CHAR},
+      is_vip = #{record.isVip,jdbcType=CHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
